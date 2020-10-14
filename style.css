@@ -1,0 +1,97 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.open__btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  background-color: blue;
+  border: none;
+  color: #ffffff;
+  padding: 15px 25px;
+  border-radius: 5px;
+}
+.open__btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease-in;
+}
+.form {
+  transform: translate(50%, 50%) scale(0);
+  transition: all 0.3s ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.form.active {
+  transform: translate(0%, 0%) scale(1);
+}
+.form__overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.form__body {
+  position: relative;
+  background-color: #ffffff;
+  padding: 50px;
+}
+.form__close-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 25px;
+}
+.form__close-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.form__box {
+  display: flex;
+  flex-direction: column;
+}
+.form__input {
+  margin-bottom: 15px;
+}
+.form__input:focus {
+  border: green;
+}
+.form__input.__email.__error,
+.form__input.__error {
+  border-color: red;
+}
+.form__socials {
+  text-align: center;
+  padding: 10px;
+}
+.form__socials-links {
+  padding: 10px;
+}
+.form__enter {
+  display: flex;
+  align-items: center;
+}
+.form__enter-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  background-color: blue;
+  border: none;
+  color: #ffffff;
+  padding: 15px 25px;
+  border-radius: 5px;
+}
+.form__enter-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

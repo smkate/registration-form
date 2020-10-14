@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Registration form</title>
+  </head>
+  <body>
+    <div class="open">
+      <button class="open__btn">Открыть форму</button>
+    </div>
+    <div class="form">
+      <div class="form__overlay">
+        <div class="form__body">
+          <button class="form__close-btn">&times;</button>
+          <form id="form" action="#" class="form__box">
+            <input
+              type="email"
+              name="email"
+              class="form__input __email"
+              placeholder="Email"
+            />
+
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form__input"
+              placeholder="Пароль"
+            />
+            <div class="form__enter">
+              <button type="submit" class="form__enter-btn">Войти</button>
+              <a href="#">Регистрация</a>
+            </div>
+          </form>
+          <div class="form__socials">
+            <span>или через соцсети</span>
+            <div class="form__socials-links">
+              <a href="#">vk</a>
+              <a href="#">fb</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
