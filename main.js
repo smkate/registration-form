@@ -5,13 +5,6 @@ const openModal = document.querySelector('.open__btn'),
     modalFormBack = document.querySelector('.form__overlay'),
     closeModal = document.querySelector('.form__close-btn');
 
-const errorMessageSend = {
-    msg: 'Такой email не зарегистрирован',
-    url: 'restate.ru',
-    er: 'Заполните поля в форме'
-};
-
-
 openModal.addEventListener('click', () => {
     modalForm.classList.add('active');
 });
@@ -35,6 +28,14 @@ document.addEventListener('keydown', function(event) {
 function closeModalWindow() {
     modalForm.classList.remove('active');
 }
+
+// data for form sending
+const errorMessageSend = {
+    msg: 'Такой email не зарегистрирован',
+    url: 'restate.ru',
+    er: 'Заполните поля в форме'
+};
+
 // start validate a form
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('form');
@@ -44,27 +45,29 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
 
         let error = formValidate(form);
+        let sendMsg = document.querySelector('.error__message-send');
+
         let formData = new FormData(form);
 
         // send form without reloading a page
-        if (error == 0) {
+        if (error === 0) {
             let response = await fetch('sendmail.php', {
                 method: 'POST',
                 body: formData
             });
             if (response.ok) {
                 let result = await response.json();
-                // alert(result.message);
-                // console.log('Успех:', JSON.stringify(json));
+                // Result message (success)
                 document.location = errorMessageSend.url;
+                sendMsg.textContent = '';
                 form.reset();
             } else {
-                document.querySelector('.error__message-send').textContent = errorMessageSend.msg;
-                // alert("Ошибка");
+                // Error
+                sendMsg.textContent = errorMessageSend.msg;
             }
         } else {
-            document.querySelector('.error__message-send').textContent = errorMessageSend.er;
-            // alert("Заполните поля в форме");
+            // Fill inputs please
+            sendMsg.textContent = errorMessageSend.er;
         }
     }
 
@@ -88,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     error++;
                 }
             }
-        }console.log(error);
+        }
     }
 
 
