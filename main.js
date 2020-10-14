@@ -5,6 +5,12 @@ const openModal = document.querySelector('.open__btn'),
     modalFormBack = document.querySelector('.form__overlay'),
     closeModal = document.querySelector('.form__close-btn');
 
+const errorMessageSend = {
+    msg: 'Такой email не зарегистрирован',
+    url: 'restate.ru',
+    er: 'Заполните поля в форме'
+};
+
 
 openModal.addEventListener('click', () => {
     modalForm.classList.add('active');
@@ -48,13 +54,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             if (response.ok) {
                 let result = await response.json();
-                alert(result.message);
+                // alert(result.message);
+                // console.log('Успех:', JSON.stringify(json));
+                document.location = errorMessageSend.url;
                 form.reset();
             } else {
-                alert("Ошибка");
+                document.querySelector('.error__message-send').textContent = errorMessageSend.msg;
+                // alert("Ошибка");
             }
         } else {
-            alert("Заполните поля в форме");
+            document.querySelector('.error__message-send').textContent = errorMessageSend.er;
+            // alert("Заполните поля в форме");
         }
     }
 
@@ -78,17 +88,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     error++;
                 }
             }
-        }
+        }console.log(error);
     }
 
 
     function formAddError(input) {
         input.classList.add('__error');
         input.classList.add('.__error');
+        document.querySelector('.error__message-email').textContent = 'Введите email';
+        document.querySelector('.error__message-password').textContent = 'Введите пароль';
     }
     function formRemoveError(input) {
         input.classList.remove('__error');
         input.classList.remove('__error');
+        document.querySelector('.error__message-email').textContent = '';
+        document.querySelector('.error__message-password').textContent = '';
     }
     // check right email
     function emailTest(input) {
