@@ -65,29 +65,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Error
                 sendMsg.textContent = errorMessageSend.msg;
             }
-        } else {
-            // Fill inputs please
-            sendMsg.textContent = errorMessageSend.er;
         }
     }
 
     function formValidate(form) {
         let error = 0;
         let formInput = document.querySelectorAll('.form__input');
+        let emailInput = document.querySelector('.form__input.__email');
+        let passwInput = document.querySelector('.form__input.__password');
+
 
         
         for (let index = 0; index < formInput.length; index++) {
             const input = formInput[index];
             formRemoveError(input);
 
-            if (input.classList.contains('__email')) {
+            if (input.classList.contains('__email') || emailInput.value == '') {
                 if (emailTest(input)) {
                     formAddError(input);
+                    document.querySelector('.error__message-email').textContent = 'Введите email';
                     error++;
                 }
             } else {
-                if (input.value == '') {
+                if (passwInput.value == '') {
                     formAddError(input);
+                    document.querySelector('.error__message-password').textContent = 'Введите пароль';
                     error++;
                 }
             }
@@ -98,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function formAddError(input) {
         input.classList.add('__error');
         input.classList.add('.__error');
-        document.querySelector('.error__message-email').textContent = 'Введите email';
-        document.querySelector('.error__message-password').textContent = 'Введите пароль';
     }
     function formRemoveError(input) {
         input.classList.remove('__error');
